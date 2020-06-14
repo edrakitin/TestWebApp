@@ -1,0 +1,45 @@
+﻿@model TestWebApp.Models.FilmsModel
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<div id="mainTableDiv">
+    @await Html.PartialAsync("_PagingData", Model)
+</div>
+
+<input type="hidden" id="currentPageValue" value="@Model.CurrentPage" />
+
+<!-- Modal -->
+<div class="modal fade" id="modalDeleteFilm" role="dialog">
+    <div class="modal-dialog full-width-screen-modal-dialog">
+        <div class="modal-content full_modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title">Удаление записи о фильме</h4>
+            </div>
+            <div class="modal-header">
+                <h5 class="modal-title">Вы действительно хотите удалить запись о фильме?</h5>
+            </div>
+            <input type="hidden" id="hiddenDeleteFilmId" class="modalInputData" />
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" style="color: #fff;background-color: #673ab7;" onclick="deleteFilmConfirm()">Удалить</button>
+                <button type="button" class="btn btn-default" data-dismiss="modal">Закрыть</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal Msg-->
+<div class="modal fade" id="messageModalFilm" role="dialog">
+    <div class="modal-dialog modal-sm">
+        <div class="modal-content">
+            <div class="modal-body">
+                <label id="msgLabelFilm" style="color:red"></label>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Закрыть</button>
+            </div>
+        </div>
+    </div>
+</div>
+
